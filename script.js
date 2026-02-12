@@ -177,3 +177,34 @@ const observer = new IntersectionObserver(
 );
 
 reveals.forEach(el => observer.observe(el));
+const adminItems = document.querySelectorAll('.announcement-item, .principal-card-new');
+
+adminItems.forEach((item, index) => {
+    item.style.opacity = "0";
+    item.style.transform = "translateY(30px)";
+    item.style.transition = "0.6s ease";
+
+    setTimeout(() => {
+        item.style.opacity = "1";
+        item.style.transform = "translateY(0)";
+    }, index * 150);
+});
+const items = document.querySelectorAll('.admin-item');
+
+items.forEach(item => {
+  item.addEventListener('mousemove', e => {
+    const rect = item.getBoundingClientRect();
+    const x = e.clientX - rect.left;
+    const y = e.clientY - rect.top;
+
+    const moveX = (x - rect.width / 2) / 20;
+    const moveY = (y - rect.height / 2) / 20;
+
+    item.style.transform =
+      `translateY(-8px) translate(${moveX}px, ${moveY}px)`;
+  });
+
+  item.addEventListener('mouseleave', () => {
+    item.style.transform = "translateY(0)";
+  });
+});
