@@ -6,6 +6,11 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Welcome!</title>
     <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+   <link rel="icon" type="image/png" sizes="32x32" href="Images/logo.png">
+<link rel="icon" type="image/png" sizes="16x16" href="Images/logo.png">
+<link rel="apple-touch-icon" href="Images/logo.png">
+
 </head>
 
 <body>
@@ -56,9 +61,16 @@
                 <img src="Images/slide4.jpeg" class="slide">
                 <img src="Images/slide 5.jpg" class="slide last-image ">
             </div>
+            <div class="slider-dots">
+  <span class="dot active"></span>
+  <span class="dot"></span>
+  <span class="dot"></span>
+</div>
+
 
             <button class="arrow right">&#10095;</button>
         </div>
+        
         <div class="slider-banner">
             <div class="banner-marquee">
                 <div class="banner-track">
@@ -169,7 +181,7 @@
 
 </div>
 
-      <a href="#" class="admin-btn">View All Notifications</a>
+      <a href="#" class="admin-btn reveal" data-reveal="left">View All Notifications</a>
 
     </div>
 
@@ -183,13 +195,13 @@
           <img src="Images/principal.jpg" alt="Principal">
         </div>
 
-        <div class="principal-info">
+        <div class="principal-info reveal" data-reveal="right">
           <h3>PUTIN</h3>
           <span>Principal</span>
           <p>
            
           </p>
-          <a href="#" class="principal-btn">Principal's Message</a>
+          <a href="#" class="principal-btn reveal" data-reveal="right">Principal's Message</a>
         </div>
 
       </div>
@@ -199,6 +211,155 @@
   </div>
 
 </section>
+<!-- =========================
+     ABOUT INSTITUTION SECTION
+========================= -->
+
+<section class="about-section reveal-group">
+
+  <div class="about-container">
+
+    <!-- LEFT SIDE (Video / Image) -->
+    <div class="about-left reveal" data-reveal="left">
+
+      <div class="about-media">
+        <iframe 
+         src="https://www.youtube.com/embed/fxywxPfwRN8"
+          title="About Our Institution"
+         allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+          frameborder="0"
+          allowfullscreen>
+        </iframe>
+      </div>
+
+    </div>
+
+    <!-- RIGHT SIDE (Content) -->
+    <div class="about-right reveal" data-reveal="right">
+
+      <h2>About Our Institution</h2>
+
+      <p>
+        Govt. Utkrisht Sr. Sec. School, Jhakri, is a premier educational
+        institution committed to academic excellence and holistic
+        development. Established with a vision to empower young minds,
+        the school provides quality education under CBSE curriculum.
+      </p>
+
+      <p>
+        Located in the scenic region of Shimla district, our institution
+        fosters innovation, discipline, and leadership among students
+        through modern teaching methods and co-curricular activities.
+      </p>
+
+      <a href="#" class="about-btn">Read More</a>
+
+    </div>
+
+  </div>
+
+</section>
+<section class="glimpse-section">
+
+  <div class="glimpse-header reveal">
+    <h2>Glimpse of</h2>
+    <p>Govt. Utkrisht Sr. Sec. School, Jhakri</p>
+  </div>
+
+  <div class="glimpse-grid">
+
+    <!-- 12 Image Boxes -->
+    <div class="glimpse-card reveal"><img src="Images/glimpse 1.jpg" alt=""></div>
+    <div class="glimpse-card reveal"><img src="Images/glimpse 2.jpg" alt=""></div>
+    <div class="glimpse-card reveal"><img src="Images/glimpse 3.jpg" alt=""></div>
+    <div class="glimpse-card reveal"><img src="Images/glimpse 4.jpg" alt=""></div>
+
+    <div class="glimpse-card reveal"><img src="Images/glimpse 5.jpg" alt=""></div>
+    <div class="glimpse-card reveal"><img src="Images/glimpse 6.jpg" alt=""></div>
+    <div class="glimpse-card reveal"><img src="Images/glimpse 7.jpg" alt=""></div>
+    <div class="glimpse-card reveal"><img src="Images/glimpse 8.jpg" alt=""></div>
+
+    <div class="glimpse-card reveal"><img src="Images/glimpse 9.jpg" alt=""></div>
+    <div class="glimpse-card reveal"><img src="Images/glimpse 10.jpg" alt=""></div>
+    <div class="glimpse-card reveal"><img src="Images/glimpse 11.jpg" alt=""></div>
+    <div class="glimpse-card reveal"><img src="Images/glimpse 12.jpg" alt=""></div>
+
+  </div>
+
+</section>
+
+<footer class="premium-footer">
+
+  <div class="footer-overlay"></div>
+
+  <div class="footer-container">
+
+    <div class="footer-column reveal-footer">
+      <h3>Student's Zone</h3>
+      <ul>
+        <li><a href="#">Auditorium</a></li>
+        <li><a href="#">Library</a></li>
+        <li><a href="#">Cafeteria</a></li>
+        <li><a href="#">Sports</a></li>
+        <li><a href="#">Hostels</a></li>
+      </ul>
+    </div>
+
+    <div class="footer-column reveal-footer">
+      <h3>Quick Links</h3>
+      <ul>
+        <li><a href="#">Undergraduate Programs</a></li>
+        <li><a href="#">Postgraduate Programs</a></li>
+        <li><a href="#">Other Programs</a></li>
+        <li><a href="#">Staff Login</a></li>
+      </ul>
+    </div>
+
+    <div class="footer-column reveal-footer">
+      <h3>Other</h3>
+      <ul>
+        <li><a href="#">Manav Sampada</a></li>
+        <li><a href="#">HP Higher Education</a></li>
+        <li><a href="#">HP University</a></li>
+        <li><a href="#">UGC</a></li>
+        <li><a href="#">NAAC</a></li>
+      </ul>
+    </div>
+
+    <div class="footer-column reveal-footer contact-col">
+      <h3>Contact</h3>
+      <p>Jhakri, Rampur Bushahr, District Shimla<br>Himachal Pradesh 172201 (India)</p>
+      <p>+91-12345-67890</p>
+      <p>Email: school@gmail.com</p>
+
+     <div class="footer-socials">
+  <a href="#" class="social facebook">
+    <i class="fab fa-facebook-f"></i>
+  </a>
+
+  <a href="#" class="social youtube">
+    <i class="fab fa-youtube"></i>
+  </a>
+
+  <a href="#" class="social instagram">
+    <i class="fab fa-instagram"></i>
+  </a>
+
+  <a href="#" class="social linkedin">
+    <i class="fab fa-linkedin-in"></i>
+  </a>
+</div>
+
+    </div>
+
+  </div>
+
+  <div class="footer-bottom">
+    <p>© 2026 Government Utkrisht Senior secondary School Jhakri</p>
+    <button class="scroll-top">↑</button>
+  </div>
+
+</footer>
 
 
 

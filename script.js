@@ -208,3 +208,73 @@ items.forEach(item => {
     item.style.transform = "translateY(0)";
   });
 });
+/* =========================
+   GLIMPSE PARALLAX
+========================= */
+
+const glimpseCards = document.querySelectorAll(".glimpse-card");
+
+glimpseCards.forEach(card => {
+
+  card.addEventListener("mousemove", e => {
+
+    const rect = card.getBoundingClientRect();
+    const x = e.clientX - rect.left;
+    const y = e.clientY - rect.top;
+
+    const centerX = rect.width / 2;
+    const centerY = rect.height / 2;
+
+    const rotateX = -(y - centerY) / 20;
+    const rotateY = (x - centerX) / 20;
+
+    card.style.transform = `
+      perspective(900px)
+      rotateX(${rotateX}deg)
+      rotateY(${rotateY}deg)
+      scale(1.05)
+    `;
+
+    const img = card.querySelector("img");
+    img.style.transform = `
+      translateX(${(x - centerX)/25}px)
+      translateY(${(y - centerY)/25}px)
+      scale(1.1)
+    `;
+  });
+
+  card.addEventListener("mouseleave", () => {
+    card.style.transform = "scale(1)";
+    const img = card.querySelector("img");
+    img.style.transform = "scale(1)";
+  });
+
+});
+/* Footer Reveal Animation */
+const footerItems = document.querySelectorAll(".reveal-footer");
+
+const revealOnScroll = () => {
+  const trigger = window.innerHeight * 0.85;
+
+  footerItems.forEach(item => {
+    const top = item.getBoundingClientRect().top;
+    if(top < trigger){
+      item.style.opacity = "1";
+      item.style.transform = "translateY(0)";
+    }
+  });
+};
+
+footerItems.forEach(item => {
+  item.style.opacity = "0";
+  item.style.transform = "translateY(60px)";
+  item.style.transition = "all 0.8s ease";
+});
+
+window.addEventListener("scroll", revealOnScroll);
+
+/* Scroll to Top */
+document.querySelector(".scroll-top")
+.addEventListener("click", () => {
+  window.scrollTo({ top:0, behavior:"smooth" });
+});
