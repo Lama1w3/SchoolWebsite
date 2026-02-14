@@ -1,3 +1,4 @@
+
 :root {
     --green: #2e8b57;
     --blue: #1f4fa3;
@@ -62,6 +63,13 @@ body {
     display: flex;
     align-items: center;
     gap: 14px;
+}
+
+.nav-left a {
+    display: inline-block;
+}
+.nav-left a img {
+    cursor: pointer;
 }
 
 .nav-left img {
