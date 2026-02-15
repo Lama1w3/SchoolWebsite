@@ -1,3 +1,51 @@
+/* =========================
+DARK BLUE SCROLLBAR
+========================= */
+
+
+/* For WebKit browsers (Chrome, Edge, Safari) */
+::-webkit-scrollbar {
+  width: 14px;
+}
+
+::-webkit-scrollbar-track {
+  background: #0d1117; /* dark base */
+  border-radius: 10px;
+}
+
+::-webkit-scrollbar-thumb {
+  background: linear-gradient(
+    270deg,
+    #0f1c3f,
+    #1c3f8f,
+    #274fd3,
+    #0f1c3f
+  );
+  background-size: 400% 400%;
+  animation: scrollGlow 6s ease infinite;
+}
+
+@keyframes scrollGlow {
+  0% { background-position: 0% 50%; }
+  100% { background-position: 100% 50%; }
+}
+
+
+/* Hover effect */
+::-webkit-scrollbar-thumb:hover {
+  background: linear-gradient(
+    180deg,
+    #1c3f8f,
+    #274fd3,
+    #6b9cff
+  );
+  box-shadow: 
+    0 0 18px rgba(31,79,163,0.7),
+    inset 0 0 8px rgba(255,255,255,0.2);
+}
+
+
+
 /* ================= GLOBAL ================= */
 
 *{
