@@ -1,23 +1,19 @@
-const intro = document.querySelector(".intro-overlay");
+/* =========================
+   INTRO
+========================= */
 
+const intro = document.querySelector(".intro-overlay");
 document.body.style.overflow = "hidden";
 
 window.addEventListener("load", () => {
-
   setTimeout(() => {
+    intro.classList.add("hide");
+    document.body.style.overflow = "auto";
 
-  intro.classList.add("hide");
-  document.body.style.overflow = "auto";
-
-  // HERO REVEAL
-  const heroText = document.querySelector(".hero-text");
-  heroText.classList.add("reveal");
-
-}, 2500);
-
-
+    const heroText = document.querySelector(".hero-text");
+    heroText.classList.add("reveal");
+  }, 2500);
 });
-
 
 
 /* =========================
@@ -33,6 +29,10 @@ const section = document.querySelector(".cinema");
 const endOverlay = document.querySelector(".end-overlay");
 const endOverlayLogo = document.querySelector(".end-overlay-logo");
 
+const viewer = document.querySelector(".image-viewer");
+const viewerImg = viewer.querySelector("img");
+
+
 /* =========================
    SCROLL VARIABLES
 ========================= */
@@ -45,6 +45,7 @@ let sectionHeight = 0;
 let maxTranslate = 0;
 
 const smoothness = 0.08;
+
 
 /* =========================
    CALCULATE DIMENSIONS
@@ -65,6 +66,7 @@ function calculate() {
 calculate();
 window.addEventListener("resize", calculate);
 
+
 /* =========================
    ANIMATION LOOP
 ========================= */
@@ -78,17 +80,16 @@ function animate() {
   const scrollFraction = Math.min(Math.max(scrollY / sectionHeight, 0), 1);
   const velocity = target - current;
 
-  /* -------- SOFT SOUNDLESS MOTION CUE -------- */
-  track.style.filter = `blur(${Math.min(Math.abs(velocity)/400, 3)}px)`;
+  track.style.filter =
+    `blur(${Math.min(Math.abs(velocity) / 400, 3)}px)`;
 
   const introEnd = 0.35;
-
   const heroItem = document.querySelector(".hero-item");
   const heroText = document.querySelector(".hero-text");
 
-  let translateX = 0; // must exist outside condition
+  let translateX = 0;
 
-  /* -------- HERO SHRINK -------- */
+  /* HERO SHRINK */
 
   if (scrollFraction < introEnd) {
 
@@ -101,11 +102,14 @@ function animate() {
     heroItem.style.transform = `scale(${scale})`;
     heroItem.style.borderRadius = `${radius}px`;
 
-    /* Subtle Hero Image Depth */
-    heroImg.style.filter = `brightness(${1 - progress * 0.2})`;
+    heroImg.style.filter =
+      `brightness(${1 - progress * 0.2})`;
 
-    heroText.style.opacity = 1 - Math.pow(progress, 1.5);
-    heroText.style.transform = `translateY(${progress * -40}px)`;
+    heroText.style.opacity =
+      1 - Math.pow(progress, 1.5);
+
+    heroText.style.transform =
+      `translateY(${progress * -40}px)`;
 
   } else {
 
@@ -120,14 +124,15 @@ function animate() {
     translateX = -galleryProgress * maxTranslate;
   }
 
-  /* -------- VERY SUBTLE CAMERA DRIFT -------- */
+  /* TRACK MOVE */
 
-  const driftY = scrollFraction * 40; // small vertical parallax
+  const driftY = scrollFraction * 40;
 
   track.style.transform =
     `translate3d(${translateX}px, ${driftY}px, 0)`;
 
-  /* -------- MAGNETIC CENTER SCALING -------- */
+
+  /* MAGNETIC CENTER */
 
   const viewportCenter = window.innerWidth / 2;
 
@@ -135,9 +140,11 @@ function animate() {
 
     const rect = item.getBoundingClientRect();
     const itemCenter = rect.left + rect.width / 2;
-    const distance = (itemCenter - viewportCenter) / window.innerWidth;
+    const distance =
+      (itemCenter - viewportCenter) / window.innerWidth;
 
-    const influence = Math.exp(-Math.pow(distance * 4, 2));
+    const influence =
+      Math.exp(-Math.pow(distance * 4, 2));
 
     const scale = 0.85 + influence * 0.15;
     const opacity = 0.4 + influence * 0.6;
@@ -146,7 +153,8 @@ function animate() {
     item.style.opacity = opacity;
   });
 
-  /* -------- FULLSCREEN END REVEAL -------- */
+
+  /* END OVERLAY */
 
   if (scrollFraction > 0.98) {
 
@@ -165,23 +173,26 @@ function animate() {
     endOverlayLogo.style.transform = "scale(0.8)";
   }
 
-  /* -------- PROGRESS BAR -------- */
-
-  progressBar.style.width = `${scrollFraction * 100}%`;
+  progressBar.style.width =
+    `${scrollFraction * 100}%`;
 
   requestAnimationFrame(animate);
 }
 
-
 animate();
 
+
 /* =========================
-   CLEAN CINEMA HOVER
+   HOVER EFFECTS
 ========================= */
 
 items.forEach(item => {
 
   const img = item.querySelector("img");
+
+  item.addEventListener("mouseenter", () => {
+    item.style.setProperty("--hoverScale", "1.08");
+  });
 
   item.addEventListener("mousemove", e => {
 
@@ -203,41 +214,22 @@ items.forEach(item => {
         ${(x - centerX)/30}px,
         ${(y - centerY)/30}px
       )`;
-
   });
 
   item.addEventListener("mouseleave", () => {
 
     item.style.setProperty("--tiltX", "0deg");
     item.style.setProperty("--tiltY", "0deg");
+    item.style.setProperty("--hoverScale", "1");
 
     img.style.transform = "scale(1)";
   });
-
 });
 
+
 /* =========================
-   CLICK LOGO → GO HOME
+   IMAGE VIEWER
 ========================= */
-
-if (endOverlayLogo) {
-
-  endOverlayLogo.addEventListener("click", () => {
-
-    document.body.style.transition = "opacity 0.6s ease";
-    document.body.style.opacity = "0";
-
-    setTimeout(() => {
-      window.location.href = "index.html"; // change if needed
-    }, 600);
-
-  });
-
-}
-
-
-const viewer = document.querySelector(".image-viewer");
-const viewerImg = viewer.querySelector("img");
 
 items.forEach(item => {
   const img = item.querySelector("img");
@@ -253,3 +245,21 @@ viewer.addEventListener("click", () => {
   viewer.classList.remove("active");
   document.body.style.overflow = "auto";
 });
+
+
+/* =========================
+   LOGO CLICK → HOME
+========================= */
+
+if (endOverlayLogo) {
+  endOverlayLogo.addEventListener("click", () => {
+
+    document.body.style.transition =
+      "opacity 0.6s ease";
+    document.body.style.opacity = "0";
+
+    setTimeout(() => {
+      window.location.href = "index.html";
+    }, 600);
+  });
+}

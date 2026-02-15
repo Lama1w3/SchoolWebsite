@@ -17,6 +17,7 @@ body {
     font-family: "Poppins", sans-serif;
     background: rgb(255, 255, 255);
     animation: pageFade 0.8s ease;
+    overflow-x: hidden;
 }
 @keyframes pageFade {
   from { opacity: 0; }
