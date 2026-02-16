@@ -1,3 +1,24 @@
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    font-family: 'Segoe UI', sans-serif;
+}
+
+body {
+    padding-top: 120px;
+    background: #f8faff;
+    animation: pageFade 0.8s ease;
+    overflow-x: hidden;
+    
+}
+
+@keyframes pageFade {
+    from { opacity: 0; }
+    to { opacity: 1; }
+}
+
+
 /* =========================
 DARK BLUE SCROLLBAR
 ========================= */
@@ -45,29 +66,6 @@ DARK BLUE SCROLLBAR
 }
 
 
-
-/* ================= GLOBAL ================= */
-
-*{
-    margin:0;
-    padding:0;
-    box-sizing:border-box;
-    font-family: 'Segoe UI', sans-serif;
-}
-
-body {
-    padding-top: 120px;
-    background: #f8faff;
-    animation: pageFade 0.8s ease;
-    overflow-x: hidden;
-    
-}
-
-@keyframes pageFade {
-    from { opacity: 0; }
-    to { opacity: 1; }
-}
-
 /* ================= NAVBAR ================= */
 
 .navbar {
@@ -89,9 +87,6 @@ body {
         0 1px 0 rgba(255,255,255,0.8),
         0 8px 24px rgba(0,32,173,0.06),
         0 20px 50px rgba(0,32,173,0.04);
-}
-html {
-    scroll-behavior: smooth;
 }
 
 @keyframes navbarFade {
@@ -214,119 +209,6 @@ html {
     color: white;
     font-weight: 700;
 }
-
-
-
-
-/* ================= HERO ================= */
-
-.notifications-hero{
-    
-     padding: 160px 20px 120px;
-    text-align: center;
-    position: relative;
-    color: white;
-    animation: heroFade 1s ease forwards;
-
-    background: linear-gradient(
-        rgba(15, 31, 61, 0.75),
-        rgba(15, 31, 61, 0.75)
-    ),
-    url("Images/glimpse\ 9.jpg") center/cover no-repeat;
-}
-
-@keyframes heroFade {
-    from { opacity: 0; }
-    to { opacity: 1; }
-}
-
-.notifications-hero h1{
-    font-size:42px;
-    color:white;
-}
-
-.notifications-hero p{
-    margin-top:10px;
-    color:#e2e8f0;
-}
-
-/* ================= NOTIFICATIONS ================= */
-
-.notifications-section{
-    padding:60px 80px 120px;
-}
-
-
-.notification-card{
-    display:flex;
-    align-items:center;
-    gap:30px;
-    padding:30px 40px;
-    border-radius:18px;
-    background:white;
-    margin-bottom:25px;
-    box-shadow:0 10px 35px rgba(0,0,0,0.05);
-    transition:all .6s cubic-bezier(.19,1,.22,1);
-    cursor:pointer;
-    position:relative;
-    overflow:hidden;
-}
-
-.notification-card:hover{
-    transform:translateY(-10px) scale(1.02);
-    box-shadow:0 30px 70px rgba(31,79,163,0.15);
-}
-
-.notification-card::before{
-    content:"";
-    position:absolute;
-    left:0;
-    top:0;
-    height:100%;
-    width:5px;
-    background:linear-gradient(to bottom,#1f4fa3,#4f7cff);
-    transform:scaleY(0);
-    transform-origin:top;
-    transition:transform .4s ease;
-}
-
-.notification-card:hover::before{
-    transform:scaleY(1);
-}
-
-.notification-date{
-    width:70px;
-    height:70px;
-    border-radius:16px;
-    background:linear-gradient(135deg,#1f4fa3,#4f7cff);
-    color:white;
-    display:flex;
-    flex-direction:column;
-    align-items:center;
-    justify-content:center;
-    font-weight:700;
-    transition:.5s ease;
-}
-
-.notification-card:hover .notification-date{
-    transform:scale(1.2) rotate(-6deg);
-}
-
-.notification-content h3{
-    font-size:18px;
-    margin-bottom:6px;
-}
-
-.notification-content a{
-    text-decoration:none;
-    color:#1c3f8f;
-    font-weight:600;
-}
-
-.notification-content a:hover{
-    text-decoration:underline;
-}
-
 /* ================= PREMIUM FOOTER ================= */
 
 .premium-footer {
@@ -519,3 +401,162 @@ html {
 .footer-socials .social:nth-child(2) { animation-delay: 0.5s; }
 .footer-socials .social:nth-child(3) { animation-delay: 1s; }
 .footer-socials .social:nth-child(4) { animation-delay: 1.5s; }
+
+/* ================= PRINCIPAL SECTION ================= */
+
+.principal-section {
+    padding: 120px 8%;
+    background: linear-gradient(to bottom, #f8faff, #eef3ff);
+}
+
+.principal-container {
+    display: grid;
+    grid-template-columns: 400px 1fr;
+    gap: 80px;
+    align-items: center;
+}
+
+/* IMAGE */
+
+.principal-image {
+    position: relative;
+}
+
+.principal-image img {
+    width: 100%;
+    border-radius: 25px;
+    box-shadow:
+        0 20px 60px rgba(28,63,143,0.15),
+        0 8px 25px rgba(28,63,143,0.08);
+    transition: 0.6s cubic-bezier(.19,1,.22,1);
+}
+
+.principal-image:hover img {
+    transform: translateY(-10px) scale(1.03);
+}
+
+/* Glow Accent */
+
+.image-glow {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    inset: 0;
+    border-radius: 25px;
+    background: linear-gradient(135deg,#1c3f8f,#274fd3);
+    opacity: 0.08;
+    filter: blur(30px);
+    z-index: -1;
+}
+
+/* CONTENT */
+
+.principal-content h2 {
+    font-size: 40px;
+    color: #0b1c3d;
+    margin-bottom: 20px;
+}
+
+.section-tag {
+    display: inline-block;
+    padding: 8px 18px;
+    border-radius: 999px;
+    background: linear-gradient(135deg,#1c3f8f,#274fd3);
+    color: white;
+    font-size: 12px;
+    letter-spacing: 1px;
+    margin-bottom: 20px;
+}
+
+.principal-content p {
+    font-size: 16px;
+    line-height: 1.8;
+    color: #444;
+    margin-bottom: 18px;
+}
+
+.principal-content h4 {
+    margin-top: 30px;
+    font-size: 18px;
+    color: #1c3f8f;
+}
+
+.designation {
+    
+    font-weight: 600;
+    font-size: 14px;
+    color: #000000;
+}
+
+/* Responsive */
+
+@media(max-width: 900px){
+    .principal-container {
+        grid-template-columns: 1fr;
+        text-align: center;
+    }
+
+    .principal-image {
+        max-width: 300px;
+        margin: 0 auto;
+    }
+}
+/* ================= PRINCIPAL HERO ================= */
+
+.principal-hero {
+    position: relative;
+    height: 40vh;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    padding-left: 8%;
+    overflow: hidden;
+
+    background: url("Images/glimpse\ 6.jpg") center/cover no-repeat;
+}
+
+/* Dark overlay for readability */
+.hero-overlay {
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(
+        90deg,
+        rgba(0,0,0,0.7) 0%,
+        rgba(0,0,0,0.4) 40%,
+        rgba(0,0,0,0.2) 100%
+    );
+}
+
+/* Content */
+
+.hero-content {
+    position: relative;
+    z-index: 2;
+    color: white;
+}
+
+.hero-sub {
+    display: inline-block;
+    font-size: 28px;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    opacity: 0.8;
+    color: white;
+    font-weight: 600;
+}
+
+.hero-content h1 {
+    font-size: 70px;
+    font-weight: 800;
+    background: linear-gradient(90deg, #ffffff, #cbd5ff);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    text-shadow: 0 10px 40px rgba(0,0,0,0.5);
+}
+.greetings{
+    font-size: 27px;
+
+}
+html {
+    scroll-behavior: smooth;
+}
