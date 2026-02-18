@@ -715,8 +715,8 @@ img {
 
 /* Glass Card */
 .highlight-card {
-    background: rgba(255, 255, 255, 0.45);
-    backdrop-filter: blur(18px);
+    background: rgba(255,255,255,0.85);
+box-shadow: 0 20px 40px rgba(0,0,0,0.1);
     -webkit-backdrop-filter: blur(18px);
 
     border-radius: 20px;
@@ -921,8 +921,8 @@ img {
 }
 .admin-card {
     position: relative;
-    background: rgba(255, 255, 255, 0.55);
-    backdrop-filter: blur(18px);
+    background: rgba(255,255,255,0.85);
+box-shadow: 0 20px 40px rgba(0,0,0,0.1);
     border-radius: 22px;
     padding: 40px;
     border: 1px solid rgba(255, 255, 255, 0.45);
@@ -1041,7 +1041,8 @@ img {
 .admin-card {
     position: relative;
     background: rgba(255, 255, 255, 0.55);
-    backdrop-filter: blur(18px);
+    background: rgba(255,255,255,0.85);
+box-shadow: 0 20px 40px rgba(0,0,0,0.1);
     border-radius: 22px;
     padding: 32px;
 
@@ -1181,7 +1182,8 @@ img {
     padding: 22px 26px;
     border-radius: 20px;
     background: rgba(255,255,255,0.2);
-    backdrop-filter: blur(18px);
+    background: rgba(255,255,255,0.85);
+box-shadow: 0 20px 40px rgba(0,0,0,0.1);
     border: 1px solid rgba(255,255,255,0.25);
     text-decoration: none;
     color: #111;
@@ -1568,7 +1570,7 @@ img {
 
 .principal-card:hover {
   transform: translateY(-12px);
-  box-shadow: 0 40px 100px rgba(0,0,0,0.12);
+  box-shadow: 0 20px 40px rgba(0,0,0,0.12);
   
 }
 
@@ -1720,7 +1722,7 @@ img {
 
 .about-media:hover {
   transform: translateY(-12px) scale(1.02);
-  box-shadow: 0 40px 100px rgba(31,79,163,0.25);
+  box-shadow: 0 20px 40px rgba(31,79,163,0.25);
 }
 
 
@@ -1823,7 +1825,7 @@ img {
   overflow: hidden;
   background: #e5e9ff;
   cursor: pointer;
-  transition: transform 0.5s cubic-bezier(.19,1,.22,1),
+  transition: transform 0.3s ease,
               box-shadow 0.5s ease;
   transform-style: preserve-3d;
 }
@@ -1833,12 +1835,16 @@ img {
   width: 110%;
   height: 110%;
   object-fit: cover;
-  transition: transform 0.6s cubic-bezier(.19,1,.22,1);
+  transition: transform 0.4s ease;
+}
+
+.glimpse-card:hover img {
+  transform: scale(1.08);
 }
 
 /* Hover lift */
 .glimpse-card:hover {
-  transform: translateY(-10px) scale(1.04);
+  transform: scale(1.05);
   box-shadow: 0 35px 80px rgba(31,79,163,0.25);
 }
 
