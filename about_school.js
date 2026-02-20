@@ -92,3 +92,12 @@ const lineObserver = new IntersectionObserver(entries => {
 }, { threshold: 0.2 });
 
 lineObserver.observe(pageContent);
+
+/* ================= MOBILE MENU TOGGLE ================= */
+
+const menuToggle = document.querySelector(".menu-toggle");
+const navMenu = document.querySelector(".nav-menu");
+
+menuToggle.addEventListener("click", () => {
+    navMenu.classList.toggle("active");
+});

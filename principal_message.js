@@ -33,3 +33,16 @@ window.addEventListener("scroll", () => {
     let offset = window.scrollY;
     hero.style.backgroundPositionY = offset * 0.5 + "px";
 });
+
+/* =========================
+   HAMBURGER TOGGLE
+========================= */
+
+const hamburger = document.querySelector(".hamburger");
+const navMenu = document.querySelector(".nav-menu");
+
+hamburger.addEventListener("click", () => {
+    hamburger.classList.toggle("active");
+    navMenu.classList.toggle("active");
+     document.body.classList.toggle("no-scroll");
+});

@@ -755,3 +755,115 @@ body {
     0% { top: 10px; opacity: 1; }
     100% { top: 30px; opacity: 0; }
 }
+
+/* ================= HAMBURGER ================= */
+
+.hamburger {
+    display: none;
+    flex-direction: column;
+    cursor: pointer;
+    gap: 6px;
+    z-index: 10001;
+}
+
+.hamburger span {
+    width: 28px;
+    height: 3px;
+    background: #1c3f8f;
+    border-radius: 3px;
+    transition: 0.4s ease;
+}
+
+/* Animate to X */
+.hamburger.active span:nth-child(1) {
+    transform: rotate(45deg) translate(5px, 5px);
+}
+
+.hamburger.active span:nth-child(2) {
+    opacity: 0;
+}
+
+.hamburger.active span:nth-child(3) {
+    transform: rotate(-45deg) translate(6px, -6px);
+}
+/* ================= MOBILE NAV ================= */
+
+@media (max-width: 992px) {
+
+    .hamburger {
+        display: flex;
+    }
+
+    .nav-menu {
+        position: fixed;
+        top: 0;
+        right: -100%;
+        height: 100vh;
+        width: 280px;
+        background: white;
+        flex-direction: column;
+        align-items: flex-start;
+        padding: 120px 30px;
+        gap: 20px;
+        box-shadow: -10px 0 30px rgba(0,0,0,0.1);
+        transition: 0.4s ease;
+    }
+
+    .nav-menu a {
+        width: 100%;
+        background: none;
+        padding: 12px 0;
+        border-radius: 0;
+    }
+
+    .nav-menu.active {
+        right: 0;
+    }
+
+    .navbar {
+        height: 90px;
+    }
+
+    .nav-left img {
+        height: 70px;
+    }
+
+    .college-text h1 {
+        font-size: 18px;
+    }
+
+    .college-text p {
+        font-size: 14px;
+    }
+}
+@media (max-width: 768px) {
+
+    .departments-hero {
+        height: 90vh;
+    }
+
+    .hero-content h1 {
+        font-size: 32px;
+    }
+
+    .hero-content p {
+        font-size: 15px;
+    }
+
+    .departments-section {
+        padding: 60px 20px;
+    }
+
+    .department-card {
+        padding: 20px;
+    }
+
+    .footer-grid {
+        grid-template-columns: 1fr;
+        gap: 40px;
+    }
+
+    .premium-footer {
+        padding: 60px 30px 30px;
+    }
+}

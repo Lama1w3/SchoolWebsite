@@ -237,3 +237,11 @@ document.querySelector(".scroll-top")
 .addEventListener("click", () => {
   window.scrollTo({ top:0, behavior:"smooth" });
 });
+const hamburger = document.getElementById("hamburger");
+const navMenu = document.querySelector(".nav-menu");
+
+hamburger.addEventListener("click", () => {
+  console.log("clicked");   // 👈 add this
+  hamburger.classList.toggle("active");
+  navMenu.classList.toggle("open");
+});

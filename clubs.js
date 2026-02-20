@@ -65,7 +65,31 @@ window.addEventListener("scroll", () => {
         navbar.classList.remove("scrolled");
     }
 });
-// ================= HAMBURGER =================
+
+/* Smooth hover shadow intensity */
+document.querySelectorAll(".club-card").forEach(card => {
+    card.addEventListener("mousemove", (e) => {
+        const rect = card.getBoundingClientRect();
+        const x = e.clientX - rect.left;
+        const y = e.clientY - rect.top;
+
+        card.style.boxShadow = `
+            ${(x - rect.width/2)/25}px 
+            ${(y - rect.height/2)/25}px 
+            40px rgba(0,0,0,0.08)
+        `;
+    });
+
+    card.addEventListener("mouseleave", () => {
+        card.style.boxShadow = `
+            0 10px 30px rgba(0,0,0,0.05),
+            0 2px 6px rgba(0,0,0,0.03)
+        `;
+    });
+});
+
+/* ================= HAMBURGER ================= */
+
 const hamburger = document.querySelector(".hamburger");
 const navMenu = document.querySelector(".nav-menu");
 
@@ -75,6 +99,7 @@ if (hamburger) {
         navMenu.classList.toggle("active");
     });
 }
+
 document.querySelectorAll(".nav-menu a").forEach(link => {
     link.addEventListener("click", () => {
         hamburger.classList.remove("active");

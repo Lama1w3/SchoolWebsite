@@ -505,16 +505,20 @@ DARK BLUE SCROLLBAR
 
 .principal-hero {
     position: relative;
-    height: 40vh;
+    min-height: 45vh;
     width: 100%;
     display: flex;
     align-items: center;
-    padding-left: 8%;
-    overflow: hidden;
+    justify-content: center;   /* center content */
+    text-align: center;        /* center text */
+    padding: 0 20px;           /* remove 8% side padding */
 
-    background: url("Images/glimpse\ 6.jpg") center/cover no-repeat;
+    background: url("Images/glimpse 6.jpg") center/cover no-repeat;
 }
-
+html, body {
+    max-width: 100%;
+    overflow-x: hidden;
+}
 /* Dark overlay for readability */
 .hero-overlay {
     position: absolute;
@@ -559,4 +563,167 @@ DARK BLUE SCROLLBAR
 }
 html {
     scroll-behavior: smooth;
+}
+
+/* =========================
+   HAMBURGER MENU
+========================= */
+
+.hamburger {
+    display: none;
+    flex-direction: column;
+    gap: 6px;
+    cursor: pointer;
+    z-index: 10001;
+}
+
+.hamburger span {
+    width: 28px;
+    height: 3px;
+    background: #1c3f8f;
+    border-radius: 3px;
+    transition: 0.4s ease;
+}
+
+/* Animate hamburger to X */
+.hamburger.active span:nth-child(1) {
+    transform: rotate(45deg) translate(5px, 5px);
+}
+
+.hamburger.active span:nth-child(2) {
+    opacity: 0;
+}
+
+.hamburger.active span:nth-child(3) {
+    transform: rotate(-45deg) translate(6px, -6px);
+}
+
+/* =========================
+   MOBILE NAVIGATION
+========================= */
+
+@media (max-width: 1000px) {
+
+    .nav-menu {
+        position: fixed;
+        top: 120px;
+        right: -100%;
+        width: 100%;
+        height: calc(100vh - 120px);
+        background: white;
+        flex-direction: column;
+        align-items: center;
+        justify-content: start;
+        padding-top: 40px;
+        gap: 20px;
+        transition: 0.5s ease;
+        box-shadow: 0 20px 50px rgba(0,0,0,0.1);
+    }
+
+    .nav-menu.active {
+        right: 0;
+    }
+
+    .nav-menu a {
+        font-size: 18px;
+        padding: 14px 30px;
+    }
+
+    .hamburger {
+        display: flex;
+    }
+    .navbar {
+    padding: 10px 15px;
+}
+}
+
+@media (max-width: 1000px) {
+
+    .principal-container {
+        grid-template-columns: 1fr;
+        gap: 40px;
+        text-align: center;
+    }
+
+    .principal-content h2 {
+        font-size: 30px;
+    }
+
+    .hero-content h1 {
+        font-size: 42px;
+    }
+
+    .hero-sub {
+        font-size: 18px;
+    }
+
+    .principal-section {
+        padding: 80px 6%;
+    }
+}
+@media (max-width: 700px) {
+
+    .college-text h1 {
+        font-size: 18px;
+    }
+
+    .college-text p {
+        font-size: 13px;
+    }
+
+    .nav-left img {
+        height: 70px;
+    }
+
+    .navbar {
+        height: 90px;
+    }
+
+    body {
+        padding-top: 90px;
+    }
+
+    .nav-menu {
+        top: 90px;
+        height: calc(100vh - 90px);
+    }
+}
+.no-scroll {
+    overflow: hidden;
+}
+
+/* ================= FOOTER RESPONSIVE FIX ================= */
+
+@media (max-width: 1000px) {
+
+    .premium-footer {
+        padding: 60px 40px 30px;
+    }
+
+    .footer-grid {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 40px;
+    }
+}
+
+@media (max-width: 600px) {
+
+    .premium-footer {
+        padding: 50px 20px 25px;
+        text-align: center;
+    }
+
+    .footer-grid {
+        grid-template-columns: 1fr;
+        gap: 35px;
+    }
+
+    .footer-column h3::after {
+        left: 50%;
+        transform: translateX(-50%);
+    }
+
+    .footer-socials {
+        justify-content: center;
+    }
 }

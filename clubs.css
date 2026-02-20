@@ -1,3 +1,6 @@
+html {
+    scroll-behavior: smooth;
+}
 /* =========================
 DARK BLUE SCROLLBAR
 ========================= */
@@ -45,29 +48,6 @@ DARK BLUE SCROLLBAR
 }
 
 
-
-/* ================= GLOBAL ================= */
-
-*{
-    margin:0;
-    padding:0;
-    box-sizing:border-box;
-    font-family: 'Segoe UI', sans-serif;
-}
-
-body {
-    padding-top: 120px;
-    background: #f8faff;
-    animation: pageFade 0.8s ease;
-    overflow-x: hidden;
-    
-}
-
-@keyframes pageFade {
-    from { opacity: 0; }
-    to { opacity: 1; }
-}
-
 /* ================= NAVBAR ================= */
 
 .navbar {
@@ -83,16 +63,41 @@ body {
     align-items: center;
 
     padding: 10px 20px;
-    background: white;
+
+    background: transparent;
+    box-shadow: none;
+
+    transition: 
+        background 0.4s ease,
+        box-shadow 0.4s ease,
+        backdrop-filter 0.4s ease;
+}
+/* ================= NAVBAR WHEN SCROLLED ================= */
+
+.navbar.scrolled {
+    background: rgba(255, 255, 255, 0.95);
+    backdrop-filter: blur(12px);
 
     box-shadow:
-        0 1px 0 rgba(255,255,255,0.8),
-        0 8px 24px rgba(0,32,173,0.06),
-        0 20px 50px rgba(0,32,173,0.04);
+        0 8px 24px rgba(0,32,173,0.08),
+        0 20px 50px rgba(0,32,173,0.06);
 }
-html {
-    scroll-behavior: smooth;
+/* NAVBAR WHITE MODE (OVER HERO) */
+
+.navbar:not(.scrolled) .college-text h1,
+.navbar:not(.scrolled) .college-text p,
+.navbar:not(.scrolled) .nav-menu a {
+    color: white;
 }
+
+.navbar:not(.scrolled) .nav-menu a {
+    background: rgba(255,255,255,0.1);
+}
+
+.navbar:not(.scrolled) .nav-menu a::after {
+    border-color: white;
+}
+
 
 @keyframes navbarFade {
     from { opacity: 0; }
@@ -214,119 +219,6 @@ html {
     color: white;
     font-weight: 700;
 }
-
-
-
-
-/* ================= HERO ================= */
-
-.notifications-hero{
-    
-     padding: 160px 20px 120px;
-    text-align: center;
-    position: relative;
-    color: white;
-    animation: heroFade 1s ease forwards;
-
-    background: linear-gradient(
-        rgba(15, 31, 61, 0.75),
-        rgba(15, 31, 61, 0.75)
-    ),
-    url("Images/glimpse\ 9.jpg") center/cover no-repeat;
-}
-
-@keyframes heroFade {
-    from { opacity: 0; }
-    to { opacity: 1; }
-}
-
-.notifications-hero h1{
-    font-size:42px;
-    color:white;
-}
-
-.notifications-hero p{
-    margin-top:10px;
-    color:#e2e8f0;
-}
-
-/* ================= NOTIFICATIONS ================= */
-
-.notifications-section{
-    padding:60px 80px 120px;
-}
-
-
-.notification-card{
-    display:flex;
-    align-items:center;
-    gap:30px;
-    padding:30px 40px;
-    border-radius:18px;
-    background:white;
-    margin-bottom:25px;
-    box-shadow:0 10px 35px rgba(0,0,0,0.05);
-    transition:all .6s cubic-bezier(.19,1,.22,1);
-    cursor:pointer;
-    position:relative;
-    overflow:hidden;
-}
-
-.notification-card:hover{
-    transform:translateY(-10px) scale(1.02);
-    box-shadow:0 30px 70px rgba(31,79,163,0.15);
-}
-
-.notification-card::before{
-    content:"";
-    position:absolute;
-    left:0;
-    top:0;
-    height:100%;
-    width:5px;
-    background:linear-gradient(to bottom,#1f4fa3,#4f7cff);
-    transform:scaleY(0);
-    transform-origin:top;
-    transition:transform .4s ease;
-}
-
-.notification-card:hover::before{
-    transform:scaleY(1);
-}
-
-.notification-date{
-    width:70px;
-    height:70px;
-    border-radius:16px;
-    background:linear-gradient(135deg,#1f4fa3,#4f7cff);
-    color:white;
-    display:flex;
-    flex-direction:column;
-    align-items:center;
-    justify-content:center;
-    font-weight:700;
-    transition:.5s ease;
-}
-
-.notification-card:hover .notification-date{
-    transform:scale(1.2) rotate(-6deg);
-}
-
-.notification-content h3{
-    font-size:18px;
-    margin-bottom:6px;
-}
-
-.notification-content a{
-    text-decoration:none;
-    color:#1c3f8f;
-    font-weight:600;
-}
-
-.notification-content a:hover{
-    text-decoration:underline;
-}
-
 /* ================= PREMIUM FOOTER ================= */
 
 .premium-footer {
@@ -519,9 +411,298 @@ html {
 .footer-socials .social:nth-child(2) { animation-delay: 0.5s; }
 .footer-socials .social:nth-child(3) { animation-delay: 1s; }
 .footer-socials .social:nth-child(4) { animation-delay: 1.5s; }
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    font-family: 'Segoe UI', sans-serif;
+}
+:root {
+    --primary: #1c3f8f;
+    --primary-light: #274fd3;
+    --dark-text: #0f172a;
+    --muted-text: #475569;
+    --soft-bg: #f6f9ff;
+    --card-bg: #ffffff;
+    --border-soft: #e6ecf5;
+}
 
+body {
+    font-family: "Inter", "Segoe UI", sans-serif;
+    background: var(--soft-bg);
+    color: var(--dark-text);
+    line-height: 1.6;
+    animation: pageFade 0.8s ease;
+    overflow-x: hidden;
+    
+}
 
+@keyframes pageFade {
+    from { opacity: 0; }
+    to { opacity: 1; }
+}
+/* ================= HERO SECTION ================= */
 
+.departments-hero {
+    position: relative;
+    height: 120vh;
+    background: url("Images/glimpse 8.jpg") center/cover no-repeat;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    margin-top: -120px;
+    padding-top: 120px;
+}
+
+.hero-overlay {
+    position: absolute;
+    inset: 0;
+    background:
+        linear-gradient(to bottom, rgba(0,0,0,0.65), rgba(0,0,0,0.7)),
+        radial-gradient(circle at 70% 30%, rgba(39,79,211,0.3), transparent 60%);
+}
+
+.hero-content {
+    position: relative;
+    max-width: 900px;
+    padding: 40px;
+    color: white;
+    animation: heroEntrance 1.2s cubic-bezier(.19,1,.22,1) forwards;
+    opacity: 0;
+    transform: translateY(60px);
+}
+
+@keyframes heroEntrance {
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.hero-content h1 {
+    font-size: 64px;
+    font-weight: 700;
+    letter-spacing: 1px;
+    margin-bottom: 25px;
+}
+
+.hero-content p {
+    font-size: 20px;
+    opacity: 0.9;
+}
+
+/* Button */
+.hero-btn {
+    display: inline-block;
+    padding: 14px 32px;
+    border-radius: 50px;
+    background: linear-gradient(135deg, #1c3f8f, #274fd3);
+    color: white;
+    text-decoration: none;
+    font-weight: 600;
+    transition: 0.4s ease;
+}
+
+.hero-btn:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 15px 40px rgba(39,79,211,0.4);
+}
+
+/* Scroll indicator */
+.scroll-indicator {
+    position: absolute;
+    bottom: 30px;
+    width: 30px;
+    height: 50px;
+    border: 2px solid white;
+    border-radius: 50px;
+}
+
+.scroll-indicator span {
+    position: absolute;
+    top: 10px;
+    left: 50%;
+    width: 6px;
+    height: 6px;
+    background: white;
+    border-radius: 50%;
+    transform: translateX(-50%);
+    animation: scrollMove 2s infinite;
+}
+
+@keyframes scrollMove {
+    0% { top: 10px; opacity: 1; }
+    100% { top: 30px; opacity: 0; }
+}
+
+/* =====================================
+   ELITE INSTITUTIONAL CLUBS SECTION
+===================================== */
+
+.clubs-section {
+    position: relative;
+    padding: 180px 120px;
+    background:
+        radial-gradient(circle at 20% 10%, rgba(39,79,211,0.05), transparent 50%),
+        radial-gradient(circle at 90% 90%, rgba(28,63,143,0.05), transparent 50%),
+        #ffffff;
+}
+
+/* SECTION HEADER */
+
+.section-header {
+    max-width: 900px;
+    margin: 0 auto 120px;
+    text-align: center;
+}
+
+.section-header h2 {
+    font-size: 48px;
+    font-weight: 700;
+    margin-bottom: 25px;
+    position: relative;
+    display: inline-block;
+}
+
+.section-header h2::after {
+    content: "";
+    position: absolute;
+    bottom: -14px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 80px;
+    height: 4px;
+    background: var(--primary);
+    border-radius: 4px;
+}
+
+.section-header p {
+    font-size: 18px;
+    color: var(--muted-text);
+}
+
+/* GRID STRUCTURE */
+
+.clubs-container {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(420px, 1fr));
+    gap: 90px;
+}
+
+/* CARD DESIGN */
+
+.club-card {
+    position: relative;
+    border-radius: 30px;
+    overflow: hidden;
+    background: var(--card-bg);
+    border: 1px solid var(--border-soft);
+    transition: all 0.6s cubic-bezier(.19,1,.22,1);
+    will-change: transform;
+    transform-style: preserve-3d;
+}
+
+/* Depth layer */
+
+.club-card::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    border-radius: 30px;
+    background: linear-gradient(
+        to bottom,
+        rgba(39,79,211,0.04),
+        transparent 40%
+    );
+    opacity: 0;
+    transition: 0.5s ease;
+}
+
+.club-card:hover::before {
+    opacity: 1;
+}
+
+.club-card:hover {
+    transform: translateY(-18px) rotateX(1.2deg) rotateY(-1.2deg);
+    box-shadow:
+        0 40px 100px rgba(0,0,0,0.08),
+        0 15px 40px rgba(28,63,143,0.08);
+}
+
+/* IMAGE */
+
+.club-image {
+    height: 320px;
+    overflow: hidden;
+    position: relative;
+}
+
+.club-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 1.4s cubic-bezier(.19,1,.22,1);
+}
+
+.club-card:hover .club-image img {
+    transform: scale(1.1);
+}
+
+/* Overlay Title */
+
+.image-overlay {
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(
+        to top,
+        rgba(0,0,0,0.75),
+        rgba(0,0,0,0.2)
+    );
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    padding: 40px;
+    color: white;
+}
+
+.image-overlay h3 {
+    font-size: 26px;
+    font-weight: 600;
+}
+
+/* Content */
+
+.club-content {
+    padding: 50px;
+}
+
+.club-content p {
+    font-size: 16px;
+    color: var(--muted-text);
+}
+
+/* Button refined */
+
+.club-btn {
+    display: inline-block;
+    margin-top: 35px;
+    padding: 14px 34px;
+    border-radius: 50px;
+    border: 2px solid var(--primary);
+    color: var(--primary);
+    font-weight: 600;
+    text-decoration: none;
+    transition: all 0.4s ease;
+}
+
+.club-btn:hover {
+    
+    background: var(--primary);
+    color: white;
+    transform: translateY(-4px);
+    box-shadow: 0 12px 30px rgba(28,63,143,0.3);
+}
 /* ================= HAMBURGER ================= */
 
 .hamburger {
@@ -539,6 +720,7 @@ html {
     transition: 0.4s ease;
 }
 
+/* Animate to X */
 .hamburger.active span:nth-child(1) {
     transform: rotate(45deg) translate(5px, 5px);
 }
@@ -550,9 +732,7 @@ html {
 .hamburger.active span:nth-child(3) {
     transform: rotate(-45deg) translate(6px, -6px);
 }
-
-
-/* ================= RESPONSIVE ================= */
+/* ================= FULL MOBILE RESPONSIVE ================= */
 
 @media (max-width: 992px) {
 
@@ -560,10 +740,6 @@ html {
     .navbar {
         height: 80px;
         padding: 10px 20px;
-    }
-
-    body {
-        padding-top: 80px;
     }
 
     .nav-left img {
@@ -584,7 +760,7 @@ html {
         right: -100%;
         height: 100vh;
         width: 100%;
-        background: linear-gradient(135deg,#0f1c3f,#1c3f8f);
+        background: linear-gradient(135deg, #0f1c3f, #1c3f8f);
         flex-direction: column;
         justify-content: center;
         align-items: center;
@@ -605,15 +781,41 @@ html {
         right: 0;
     }
 
-    /* Notifications spacing */
-    .notifications-section {
-        padding: 40px 20px 80px;
+    /* Hero */
+    .departments-hero {
+        height: 100vh;
+        margin-top: -80px;
+        padding-top: 80px;
     }
 
-    .notification-card {
-        flex-direction: column;
-        align-items: flex-start;
-        gap: 15px;
+    .hero-content h1 {
+        font-size: 34px;
+    }
+
+    .hero-content p {
+        font-size: 16px;
+    }
+
+    /* Clubs section */
+    .clubs-section {
+        padding: 80px 20px;
+    }
+
+    .section-header h2 {
+        font-size: 32px;
+    }
+
+    .section-header p {
+        font-size: 15px;
+    }
+
+    .clubs-container {
+        grid-template-columns: 1fr;
+        gap: 50px;
+    }
+
+    .club-content {
+        padding: 30px;
     }
 
     /* Footer */

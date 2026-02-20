@@ -65,3 +65,14 @@ window.addEventListener("scroll", () => {
         navbar.classList.remove("scrolled");
     }
 });
+/* =========================
+   HAMBURGER TOGGLE
+========================= */
+
+const hamburger = document.querySelector(".hamburger");
+const navMenu = document.querySelector(".nav-menu");
+
+hamburger.addEventListener("click", () => {
+    hamburger.classList.toggle("active");
+    navMenu.classList.toggle("active");
+});
