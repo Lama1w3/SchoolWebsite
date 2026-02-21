@@ -176,6 +176,22 @@ const observer = new IntersectionObserver(
     }
 );
 
+const __SITE_OWNER__ = {
+  maker: "Abhimanyu Lama",
+  role: "Frontend Developer + Backend Developer",
+  year: "2026"
+};
+
+Object.defineProperty(window, "whoMadeThis", {
+  get() {
+    console.log(
+      "%cSite crafted with  by " + __SITE_OWNER__.maker,
+      "color: #6e8cff; font-size: 14px; font-weight: 500;"
+    );
+    return __SITE_OWNER__;
+  }
+});
+
 reveals.forEach(el => observer.observe(el));
 const adminItems = document.querySelectorAll('.announcement-item, .principal-card-new');
 
